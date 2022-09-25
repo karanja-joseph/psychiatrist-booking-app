@@ -1,6 +1,6 @@
 ## psychiatrist-booking-app
 
-### Joseph Karanja Njuguna
+### Joseph Njuguna Karanja
 ### SCCJ/00287/2016
 ### Psychiatrist Booking App
 ### CCN Assignment (System Development Lab)
