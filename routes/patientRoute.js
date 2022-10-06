@@ -38,13 +38,13 @@ router.post("/login", async (req, res) => {
                 .status(200)
                 .send({ message: "Patient does not exist", success: false });
         }
-        const isMatch = await bcrypt.compare(req.body.password, patient.password);
-        if (!isMatch) {
+        const checkPassword = await bcrypt.compare(req.body.password, patient.password);
+        if (!checkPassword) {
             return res
                 .status(200)
                 .send({ message: "Password is incorrect", success: false });
         } else {
-            const token = jwt.sign({ id: patient._id }, process.env.JWT_SECRET, {
+            const token = jwt.sign({ id: patient._id }, process.env.JWT_SECRET_KEY, {
                 expiresIn: "1d",
             });
             res
