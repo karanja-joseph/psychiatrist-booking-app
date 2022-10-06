@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const app = express();
 
 require('dotenv').config()
@@ -8,6 +9,7 @@ const patientRoute = require('./routes/patientRoute')
 const PORT = process.env.PORT || 5000;
 // console.log(process.env.DB_URL);
 
+app.use(cors())
 app.use(express.json())
 app.use('/api/patient', patientRoute)
 
