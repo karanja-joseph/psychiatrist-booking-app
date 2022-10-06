@@ -1,15 +1,26 @@
 import React from 'react';
+import toast from "react-hot-toast";
 import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 function Log() {
 
+    const navigate = useNavigate();
     const onFinish = async (values) => {
-        console.log("values", values);
         try {
-
+            const response = await axios.post("/api/patient/login", values);
+            if (response.data.success) {
+                toast.success(response.data.message);
+                toast.success('Redirect to homepage');
+                localStorage.setItem("token", response.data.data);
+                navigate("/");
+            } else {
+                toast.error(response.data.message);
+            }
         } catch (error) {
-
+            toast.error("Something went wrong");
         }
     }
     return (

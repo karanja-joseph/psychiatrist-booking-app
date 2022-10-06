@@ -1,19 +1,21 @@
 import React from 'react';
 import { Button, Form, Input } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 
 function Reg() {
 
+    const navigate = useNavigate()
     const onFinish = async (values) => {
         console.log("values", values);
         try {
             const response = await axios.post("http://localhost:5000/api/patient/register", values);
             if (response.data.success) {
                 toast.success(response.data.message);
-                // navigate("/login");
+                toast('Login now');
+                navigate("/login");
             } else {
                 toast.error(response.data.message);
             }
