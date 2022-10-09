@@ -59,4 +59,25 @@ router.post("/login", async (req, res) => {
     }
 });
 
+router.post("/get-patient-info-viaID", authMiddleware, async (req, res) => {
+    try {
+        const patient = await Patient.findOne({ _id: req.body.userId });
+        patient.password = undefined;
+        if (!patient) {
+            return res
+                .status(200)
+                .send({ message: "Patient does not exist", success: false });
+        } else {
+            res.status(200).send({
+                success: true,
+                data: patient,
+            });
+        }
+    } catch (error) {
+        res
+            .status(500)
+            .send({ message: "Error getting user info", success: false, error });
+    }
+})
+
 module.exports = router;
