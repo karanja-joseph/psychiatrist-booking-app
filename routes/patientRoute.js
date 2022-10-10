@@ -3,6 +3,7 @@ const router = express.Router();
 const Patient = require("../models/patientModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const auth = require("../middlewares/auth")
 
 
 router.post("/register", async (req, res) => {
@@ -59,10 +60,10 @@ router.post("/login", async (req, res) => {
     }
 });
 
-router.post("/get-patient-info-viaID", authMiddleware, async (req, res) => {
+router.post("/get-patient-info", auth, async (req, res) => {
     try {
-        const patient = await Patient.findOne({ _id: req.body.userId });
-        patient.password = undefined;
+        const patient = await Patient.findOne({ _id: req.body.patientID });
+        // patient.password = undefined;
         if (!patient) {
             return res
                 .status(200)
@@ -70,13 +71,16 @@ router.post("/get-patient-info-viaID", authMiddleware, async (req, res) => {
         } else {
             res.status(200).send({
                 success: true,
-                data: patient,
+                data: {
+                    name: patient.name,
+                    email: patient.email
+                },
             });
         }
     } catch (error) {
         res
             .status(500)
-            .send({ message: "Error getting user info", success: false, error });
+            .send({ message: "Error getting patient info", success: false, error });
     }
 })
 
