@@ -45,7 +45,7 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.704);
+  background-color: rgba(0, 0, 0, 0.432);
   position: fixed;
   top: 0;
   left: 0;
@@ -53,7 +53,7 @@ label {
   height: 100%;
   z-index: 9999;
 }
-.spinner-border {
+.spinner-grow {
   width: 5rem;
   height: 5rem;
   color: white !important;
@@ -75,6 +75,7 @@ label {
 .card {
   box-shadow: 0 0 2px rgb(189, 188, 188);
   border-radius: 0 !important;
+  background-color: rgb(217, 217, 217, 0.9);
 }
 .primary-button {
   background-color: #005555 !important;
@@ -115,7 +116,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #005555;
+  background-image: url("../src/images/bg.jpg");
+  background-size: cover;
 }
 .authentication-form {
   width: 400px;
@@ -129,6 +131,7 @@ p {
   max-width: max-content !important;
   padding: 7px 15px;
   margin-left: -40px;
+  margin-right: 30px;
   border-bottom-left-radius: 10px;
 }
 /* for card color: #FAEDE6, inside input: #D9D9D9 */
