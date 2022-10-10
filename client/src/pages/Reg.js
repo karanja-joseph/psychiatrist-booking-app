@@ -1,17 +1,22 @@
 import React from 'react';
 import { Button, Form, Input } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux"
 import axios from "axios";
 import toast from "react-hot-toast";
+import { hideLoading, showLoading } from '../redux/alertsSlice';
 
 
 function Reg() {
 
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const onFinish = async (values) => {
         console.log("values", values);
         try {
+            dispatch(showLoading)
             const response = await axios.post("http://localhost:5000/api/patient/register", values);
+            dispatch(hideLoading)
             if (response.data.success) {
                 toast.success(response.data.message);
                 toast('Login now');
@@ -20,6 +25,7 @@ function Reg() {
                 toast.error(response.data.message);
             }
         } catch (error) {
+            dispatch(hideLoading)
             toast.error("Something went wrong")
         }
     }
