@@ -3,6 +3,7 @@ const router = express.Router();
 const Patient = require("../models/patientModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const auth = require("../middlewares/auth")
 
 
 router.post("/register", async (req, res) => {
@@ -58,5 +59,26 @@ router.post("/login", async (req, res) => {
             .send({ message: "Error logging in", success: false, error });
     }
 });
+
+router.post("/get-patient-info", auth, async (req, res) => {
+    try {
+        const patient = await Patient.findOne({ _id: req.body.patientID });
+        patient.password = undefined;
+        if (!patient) {
+            return res
+                .status(200)
+                .send({ message: "Patient does not exist", success: false });
+        } else {
+            res.status(200).send({
+                success: true,
+                data: patient,
+            });
+        } 
+    } catch (error) {
+        res
+            .status(500)
+            .send({ message: "Error getting patient info", success: false, error });
+    }
+})
 
 module.exports = router;
