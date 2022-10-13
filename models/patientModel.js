@@ -14,10 +14,26 @@ const patientsSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-    },
-    {
-        timestamps: true,
-    }
+        isDoctor: {
+            type: Boolean,
+            default: false,
+          },
+          isAdmin: {
+            type: Boolean,
+            default: false,
+          },
+          seenNotifications: {
+            type: Array,
+            default: [],
+          },
+          unseenNotifications: {
+            type: Array,
+            default: [],
+          },
+        },
+        {
+          timestamps: true,
+        }
 );
 
 const patientsModel = mongoose.model("patients", patientsSchema);

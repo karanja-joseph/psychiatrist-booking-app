@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
 router.post("/get-patient-info", auth, async (req, res) => {
     try {
         const patient = await Patient.findOne({ _id: req.body.patientID });
-        // patient.password = undefined;
+        patient.password = undefined;
         if (!patient) {
             return res
                 .status(200)
@@ -71,12 +71,9 @@ router.post("/get-patient-info", auth, async (req, res) => {
         } else {
             res.status(200).send({
                 success: true,
-                data: {
-                    name: patient.name,
-                    email: patient.email
-                },
+                data: patient,
             });
-        }
+        } 
     } catch (error) {
         res
             .status(500)
