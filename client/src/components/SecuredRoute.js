@@ -14,7 +14,7 @@ function SecuredRoute(props) {
         try {
           dispatch(showLoading())
           const response = await axios.post(
-            "/api/patient/get-patient-info",
+            "/api/user/get-user-info-by-id",
             { token: localStorage.getItem("token") },
             {
               headers: {
