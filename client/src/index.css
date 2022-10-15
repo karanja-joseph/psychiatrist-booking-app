@@ -26,7 +26,7 @@ input:focus,
 }
 label {
   font-size: 16px !important;
-  color: black !important;
+  color: rgb(255, 255, 255) !important;
 }
 .ant-form-item {
   margin: 10px 0 !important;
@@ -34,10 +34,17 @@ label {
 .ant-picker-input input {
   border: none !important;
 }
+.ant-input {
+  background-color: rgb(243, 234, 234);
+}
 .ant-picker {
   border-radius: 2px !important;
   border: 1px solid rgba(128, 128, 128, 0.521) !important;
   height: 40px !important;
+}
+.ant-badge-count {
+  color: rgb(255, 255, 255);
+  background: #078b31;
 }
 /* Common styling */
 
@@ -75,7 +82,11 @@ label {
 .card {
   box-shadow: 0 0 2px rgb(189, 188, 188);
   border-radius: 0 !important;
-  background-color: rgb(217, 217, 217, 0.9);
+  background-color: rgb(64 23 23 / 80%);
+}
+
+.body .card {
+  background-color: #3a393915;
 }
 .primary-button {
   background-color: #005555 !important;
@@ -96,13 +107,13 @@ p {
 }
 
 .anchor {
-  color: black !important;
-  text-decoration: underline;
+  color: #696969 !important;
   cursor: pointer;
   font-size: 16px !important;
+  font-weight: 500;
 }
 .anchor:hover {
-  text-decoration: underline !important;
+  color: black !important;
 }
 
 .cursor-pointer {
