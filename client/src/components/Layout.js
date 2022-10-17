@@ -4,15 +4,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Badge } from "antd";
 
-function Layout(props) {
-
+function Layout({ children }) {
     const [collapsed, setCollapsed] = useState(false);
-
     const { user } = useSelector((state) => state.user);
 
     const location = useLocation();
     const navigate = useNavigate();
-
     const userMenu = [
         {
             name: "Home",
@@ -25,64 +22,64 @@ function Layout(props) {
             icon: "ri-file-list-line",
         },
         {
-            name: "Apply Doctor",
-            path: "/apply-doctor",
+            name: "Apply Psychiatrist",
+            path: "/apply-psychiatrist",
             icon: "ri-hospital-line",
         }
     ];
 
-    const doctorMenu = [
+    const psychiatristMenu = [
         {
-          name: "Home",
-          path: "/",
-          icon: "ri-home-line",
+            name: "Home",
+            path: "/",
+            icon: "ri-home-line",
         },
         {
-          name: "Appointments",
-          path: "/doctor/appointments",
-          icon: "ri-file-list-line",
+            name: "Appointments",
+            path: "/psychiatrist/appointments",
+            icon: "ri-file-list-line",
         },
         {
-          name: "Profile",
-          path: `/doctor/profile/${user?._id}`,
-          icon: "ri-user-line",
+            name: "Profile",
+            path: `/psychiatrist/profile/${user?._id}`,
+            icon: "ri-user-line",
         },
-      ];
-    
-      const adminMenu = [
-        {
-          name: "Home",
-          path: "/",
-          icon: "ri-home-line",
-        },
-        {
-          name: "Users",
-          path: "/admin/userslist",
-          icon: "ri-user-line",
-        },
-        {
-          name: "Doctors",
-          path: "/admin/doctorslist",
-          icon: "ri-user-star-line",
-        },
-        {
-          name: "Profile",
-          path: "/profile",
-          icon: "ri-user-line",
-        },
-      ];
+    ];
 
-    const menuToBeRendered = user?.isAdmin ? adminMenu : user?.isDoctor ? doctorMenu : userMenu;
-    const role = user?.isAdmin ? "Admin" : user?.isDoctor ? "Doctor" : "User";
+    const adminMenu = [
+        {
+            name: "Home",
+            path: "/",
+            icon: "ri-home-line",
+        },
+        {
+            name: "Users",
+            path: "/admin/userslist",
+            icon: "ri-user-line",
+        },
+        {
+            name: "Psychiatrist",
+            path: "/admin/psychiatristslist",
+            icon: "ri-user-star-line",
+        },
+        {
+            name: "Profile",
+            path: "/profile",
+            icon: "ri-user-line",
+        },
+    ];
 
+    const menuToBeRendered = user?.isAdmin ? adminMenu : user?.isPsychiatrist ? psychiatristMenu : userMenu;
+    const role = user?.isAdmin ? "Logged as Admin" : user?.isPsychiatrist ? `Psychiatrist ${user?.name}` : "Patient";
     return (
         <div className="main">
             <div className="d-flex layout">
                 <div className="sidebar">
                     <div className="sidebar-header">
-                        <h1 className="logo">Book</h1>
+                        <h1 className="logo">Psy <br/> Booking</h1>
                         <h1 className="role">{role}</h1>
                     </div>
+                    
                     <div className="menu">
                         {menuToBeRendered.map((menu) => {
                             const isActive = location.pathname === menu.path;
@@ -125,8 +122,8 @@ function Layout(props) {
 
                         <div className="d-flex align-items-center px-4">
                             <Badge
-                                // count={user?.unseenNotifications.length}
-                                // onClick={() => navigate("/notifications")}
+                                count={user?.unseenNotifications.length}
+                                onClick={() => navigate("/notifications")}
                             >
                                 <i className="ri-notification-line header-action-icon px-3"></i>
                             </Badge>
@@ -137,9 +134,7 @@ function Layout(props) {
                         </div>
                     </div>
 
-                    <div className="body">
-
-                    </div>
+                    <div className="body">{children}</div>
                 </div>
             </div>
         </div>
@@ -147,3 +142,4 @@ function Layout(props) {
 }
 
 export default Layout;
+//https://www.youtube.com/watch?v=FfZ8x2JkUuU
