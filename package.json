@@ -4,8 +4,15 @@
   "description": "_17th September 2022_",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "npx nodemon server.js"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/client"
+    ]
   },
   "repository": {
     "type": "git",
@@ -26,5 +33,9 @@
     "moment": "^2.29.4",
     "mongoose": "^6.6.2",
     "nodemon": "^2.0.20"
+  },
+  "devDependencies": {
+    "jest": "^29.2.1",
+    "supertest": "^6.3.0"
   }
 }
