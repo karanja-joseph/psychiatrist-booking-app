@@ -14,6 +14,8 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors())
 app.use(express.json())
+
+//api's to use
 app.use('/api/user', userRoute)
 app.use('/api/psychiatrist', psychiatristRoute)
 app.use('/api/admin', adminRoute)
