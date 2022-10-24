@@ -73,6 +73,12 @@ function BookAppointment() {
   };
   const bookNow = async () => {
     setIsAvailable(false);
+    // if(psychiatrist.timings[0] >= time && psychiatrist.timings[0] <= time){
+
+    // }
+    // else{
+      
+    // }
     try {
       dispatch(showLoading());
       const response = await axios.post(
