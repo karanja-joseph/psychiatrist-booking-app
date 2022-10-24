@@ -19,3 +19,5 @@ app.use('/api/psychiatrist', psychiatristRoute)
 app.use('/api/admin', adminRoute)
 
 app.listen(PORT, () => console.log(`Server runs on port ${PORT} !`))
+
+//when logging to diff role, remove the cache in the request
