@@ -40,6 +40,9 @@ router.get("/get-all-users", auth, async (req, res) => {
   }
 });
 
+//filter the all users where != to admin && psychiatrist
+//change name to /get-all-patients
+
 router.post("/change-psychiatrist-account-status",auth,async(req, res) => {
     try {
       const { psychiatristId, status } = req.body;
@@ -74,5 +77,7 @@ router.post("/change-psychiatrist-account-status",auth,async(req, res) => {
     }
   }
 );
+
+//do away with this and make an update psychiatrist route
 
 module.exports = router;

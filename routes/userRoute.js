@@ -114,6 +114,8 @@ router.post("/apply-psychiatrist-account", auth, async (req, res) => {
     }
   });
 
+//do away with this route
+
   router.post("/mark-all-notifications-as-seen",auth,async (req, res) => {
       try {
         const user = await User.findOne({ _id: req.body.userId });
@@ -222,6 +224,8 @@ router.post("/apply-psychiatrist-account", auth, async (req, res) => {
         date,
         time: { $gte: fromTime, $lte: toTime },
       });
+
+      //the if statement should check the time slots and dates.
       if (appointments.length > 0) {
         return res.status(200).send({
           message: "Appointments not available",

@@ -97,6 +97,7 @@ function Layout({ children }) {
                             className={`d-flex menu-item `}
                             onClick={() => {
                                 localStorage.clear();
+                                //add a refresh before going to login page
                                 navigate("/login");
                             }}
                         >
