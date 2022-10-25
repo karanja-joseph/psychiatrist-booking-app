@@ -53,10 +53,7 @@ router.post("/update-psychiatrist-profile", authMiddleware, async (req, res) => 
   }
 });
 
-router.get(
-  "/get-appointments-by-psychiatrist-id",
-  authMiddleware,
-  async (req, res) => {
+router.get("/get-appointments-by-psychiatrist-id", authMiddleware, async (req, res) => {
     try {
       const psychiatrist = await PsychiatristsModel.findOne({ userId: req.body.userId });
       const appointments = await Appointment.find({ psychiatristId: psychiatrist._id });
