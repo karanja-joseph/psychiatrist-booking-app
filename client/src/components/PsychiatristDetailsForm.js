@@ -2,17 +2,17 @@ import { Button, Col, Form, Input, Row, TimePicker } from "antd";
 import moment from "moment";
 import React from "react";
 
-function PsychiatristDetailsForm({ onFinish, initivalValues }) {
+function PsychiatristDetailsForm({ onFinish, initialValues }) {
   return (
     <Form
       layout="vertical"
       onFinish={onFinish}
       initialValues={{
-        ...initivalValues,
-        ...(initivalValues && {
+        ...initialValues,
+        ...(initialValues && {
           timings: [
-            moment(initivalValues?.timings[0], "HH:mm"),
-            moment(initivalValues?.timings[1], "HH:mm"),
+            moment(initialValues?.timings[0], "HH:mm"),
+            moment(initialValues?.timings[1], "HH:mm"),
           ],
         }),
       }}
@@ -74,6 +74,7 @@ function PsychiatristDetailsForm({ onFinish, initivalValues }) {
       <h1 className="card-title mt-3">Professional Information</h1>
       <Row gutter={20}>
         <Col span={8} xs={24} sm={24} lg={8}>
+          {/* the specialization should have a dropdown of psychiatrist specialization*/}
           <Form.Item
             required
             label="Specialization"
@@ -104,6 +105,7 @@ function PsychiatristDetailsForm({ onFinish, initivalValues }) {
           </Form.Item>
         </Col>
         <Col span={8} xs={24} sm={24} lg={8}>
+          {/* the timings should be of slots where they can pick (a dropdown too) */}
           <Form.Item
             required
             label="Timings"
