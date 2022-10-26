@@ -53,7 +53,7 @@ function Layout({ children }) {
             icon: "ri-home-line",
         },
         {
-            name: "Users",
+            name: "Patients",
             path: "/admin/userslist",
             icon: "ri-user-line",
         },
