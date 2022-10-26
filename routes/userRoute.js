@@ -267,3 +267,7 @@ router.post("/apply-psychiatrist-account", auth, async (req, res) => {
 
 
 module.exports = router;
+
+//Admin as a separate user and a static one.. (Google how)
+//Psychiatrist as a separate entity too with similar routes
+//The patient as user with only bookings and such
