@@ -24,7 +24,7 @@ router.get("/get-all-psychiatrists", auth, async (req, res) => {
 
 router.get("/get-all-users", auth, async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await User.find({"_id": { $ne: "6349aa5d89df60a2b23f660d"}});
     res.status(200).send({
       message: "Users fetched successfully",
       success: true,
