@@ -112,6 +112,12 @@ p {
   font-size: 16px !important;
   font-weight: 500;
 }
+.anchorRole {
+  color: #696969 !important;
+  cursor: not-allowed;
+  font-size: 16px !important;
+  font-weight: 500;
+}
 .anchor:hover {
   color: black !important;
 }
