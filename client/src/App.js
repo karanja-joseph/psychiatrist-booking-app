@@ -15,6 +15,7 @@ import Notifications from './pages/Notifications';
 import UsersList from './pages/Admin/UsersList';
 import PsychiatristList from './pages/Admin/PsychiatristList';
 import ApplyPsychiatrist from './pages/ApplyPsychiatrist';
+import Overview from './pages/Admin/Overview';
 
 
 
@@ -38,6 +39,7 @@ function App() {
         <Route path='/notifications' element={<SecuredRoute><Notifications /></SecuredRoute>} />
         <Route path='/admin/userslist' element={<SecuredRoute><UsersList /></SecuredRoute>} />
         <Route path='/admin/psychiatristslist' element={<SecuredRoute><PsychiatristList /></SecuredRoute>} />
+        <Route path='/admin/overview' element={<SecuredRoute><Overview /></SecuredRoute>} />
         <Route path='/psychiatrist/profile/:userId' element={<SecuredRoute><Profile /></SecuredRoute>} />
         <Route path='/book-appointment/:psychiatristId' element={<SecuredRoute><BookAppointment /></SecuredRoute>} />
         <Route path="/appointments" element={<SecuredRoute><Appointments /></SecuredRoute> } />

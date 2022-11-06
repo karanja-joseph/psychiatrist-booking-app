@@ -78,7 +78,7 @@ function Profile() {
     <Layout>
       <h1 className="page-title">Psychiatrist Profile</h1>
       <hr />
-      {psychiatrist && <PsychiatristDetailsForm onFinish={onFinish} initivalValues={psychiatrist} />}
+      {psychiatrist && <PsychiatristDetailsForm onFinish={onFinish} initialValues={psychiatrist} />}
     </Layout>
   );
 }

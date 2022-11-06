@@ -10,6 +10,18 @@
 
 _17th September 2022_
 
+#### Tools used
+- Github Version Control - CLI and actions
+- Javascript es6 Syntax
+- React
+- NoSQL MongoDB
+- NodeJS
+- npm packages
+- Jest
+
+#### Enviropnment
+- Windows 10 Pro
+
 #### A. Project Background and Description
 
 This app is intended for making appointments with a personal psychiatrist for a patient through a simple portal. Depending on the availability of the psychiatrist, you choose your appointment of a different date and time that suits you and him/her best. The app offers different conditions and symptoms that prior allow the psychiatrist to plan her meeting when chosen by the patient. The psychiatrist can view the appointments on the dashboard of all his/her patients.

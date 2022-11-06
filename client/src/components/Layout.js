@@ -48,12 +48,12 @@ function Layout({ children }) {
 
     const adminMenu = [
         {
-            name: "Home",
-            path: "/",
+            name: "Overview",
+            path: "/admin/overview",
             icon: "ri-home-line",
         },
         {
-            name: "Users",
+            name: "Patients",
             path: "/admin/userslist",
             icon: "ri-user-line",
         },
@@ -61,12 +61,7 @@ function Layout({ children }) {
             name: "Psychiatrist",
             path: "/admin/psychiatristslist",
             icon: "ri-user-star-line",
-        },
-        {
-            name: "Profile",
-            path: "/profile",
-            icon: "ri-user-line",
-        },
+        }
     ];
 
     const menuToBeRendered = user?.isAdmin ? adminMenu : user?.isPsychiatrist ? psychiatristMenu : userMenu;
@@ -97,6 +92,7 @@ function Layout({ children }) {
                             className={`d-flex menu-item `}
                             onClick={() => {
                                 localStorage.clear();
+                                //add a refresh before going to login page
                                 navigate("/login");
                             }}
                         >
@@ -128,9 +124,9 @@ function Layout({ children }) {
                                 <i className="ri-notification-line header-action-icon px-3"></i>
                             </Badge>
 
-                            <Link className="anchor mx-2" to="/profile">
+                            <p className="anchorRole mx-2">
                                 {user?.name}
-                            </Link>
+                            </p>
                         </div>
                     </div>
 

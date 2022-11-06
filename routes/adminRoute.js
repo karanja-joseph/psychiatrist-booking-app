@@ -24,7 +24,7 @@ router.get("/get-all-psychiatrists", auth, async (req, res) => {
 
 router.get("/get-all-users", auth, async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await User.find({ $and: [{"isPsychiatrist": { $eq: "false"}}, {"isAdmin": { $eq: "false"}}]});
     res.status(200).send({
       message: "Users fetched successfully",
       success: true,
@@ -39,6 +39,9 @@ router.get("/get-all-users", auth, async (req, res) => {
     });
   }
 });
+
+
+//change name to /get-all-patients
 
 router.post("/change-psychiatrist-account-status",auth,async(req, res) => {
     try {
@@ -57,7 +60,9 @@ router.post("/change-psychiatrist-account-status",auth,async(req, res) => {
         onClickPath: "/notifications",
       });
       user.isPsychiatrist = status === "approved" ? true : false;
-      await user.save();
+      await user.save()
+      //delete after application
+      // await user.deleteOne();
 
       res.status(200).send({
         message: "Psychiatrist status updated successfully",
@@ -74,5 +79,7 @@ router.post("/change-psychiatrist-account-status",auth,async(req, res) => {
     }
   }
 );
+
+//do away with this and make an update psychiatrist route
 
 module.exports = router;
