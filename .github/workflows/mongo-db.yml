@@ -1,0 +1,18 @@
+before_script:
+  - npm ci
+
+variables:
+  NODE_VERSION: 12.0.0
+
+test:jasmine:
+  stage: test
+  image: node:${NODE_VERSION}
+  services:
+    - mongo
+  variables:
+    MONGO_HOST: 'mongo'
+    Host: 'mongo'
+    Database: 'test'
+  script:
+    - npm run coverage
+  coverage: '/Lines \W+: ?(\d+(?:\.\d+)?)%.*/'
