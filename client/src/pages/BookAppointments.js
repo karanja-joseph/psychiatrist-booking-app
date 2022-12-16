@@ -178,6 +178,7 @@ function BookAppointment() {
                     }}
                     onChange={handleChange}
                     options={[
+                      // store as a number
                       {
                         value: 1,
                         label: '8am - 10am',
