@@ -46,8 +46,6 @@ function ApplyPsychiatrist() {
 
   return (
     <Layout>
-      <h1 className="page-title">PsychiatristDetails</h1>
-      <hr />
 
       <PsychiatristDetailsForm onFinish={onFinish} />
     </Layout>

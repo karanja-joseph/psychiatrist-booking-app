@@ -1,23 +1,19 @@
-import { Button, Col, Form, Input, Row, TimePicker } from "antd";
-import moment from "moment";
+import { Button, Col, Form, Input, Row, Select } from "antd";
 import React from "react";
 
-function PsychiatristDetailsForm({ onFinish, initialValues }) {
+
+
+
+function PsychiatristDetailsForm({ onFinish }) {
+
+
   return (
     <Form
       layout="vertical"
       onFinish={onFinish}
-      initialValues={{
-        ...initialValues,
-        ...(initialValues && {
-          timings: [
-            moment(initialValues?.timings[0], "HH:mm"),
-            moment(initialValues?.timings[1], "HH:mm"),
-          ],
-        }),
-      }}
+      
     >
-      <h1 className="card-title mt-3">Personal Information</h1>
+      <h1 className="card-title mt-3">All fields are required!</h1>
       <Row gutter={20}>
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
@@ -52,16 +48,6 @@ function PsychiatristDetailsForm({ onFinish, initialValues }) {
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Website"
-            name="website"
-            rules={[{ required: true }]}
-          >
-            <Input placeholder="Website" />
-          </Form.Item>
-        </Col>
-        <Col span={8} xs={24} sm={24} lg={8}>
-          <Form.Item
-            required
             label="Address"
             name="address"
             rules={[{ required: true }]}
@@ -69,10 +55,6 @@ function PsychiatristDetailsForm({ onFinish, initialValues }) {
             <Input placeholder="Address" />
           </Form.Item>
         </Col>
-      </Row>
-      <hr />
-      <h1 className="card-title mt-3">Professional Information</h1>
-      <Row gutter={20}>
         <Col span={8} xs={24} sm={24} lg={8}>
           {/* the specialization should have a dropdown of psychiatrist specialization*/}
           <Form.Item
@@ -87,35 +69,17 @@ function PsychiatristDetailsForm({ onFinish, initialValues }) {
         <Col span={8} xs={24} sm={24} lg={8}>
           <Form.Item
             required
-            label="Experience"
-            name="experience"
+            label="Describe a testimonial"
+            name="description"
             rules={[{ required: true }]}
           >
-            <Input placeholder="Experience" type="number" />
-          </Form.Item>
-        </Col>
-        <Col span={8} xs={24} sm={24} lg={8}>
-          <Form.Item
-            required
-            label="Fee Per Cunsultation"
-            name="feePerCunsultation"
-            rules={[{ required: true }]}
-          >
-            <Input placeholder="Fee Per Cunsultation" type="number" />
-          </Form.Item>
-        </Col>
-        <Col span={8} xs={24} sm={24} lg={8}>
-          {/* the timings should be of slots where they can pick (a dropdown too) */}
-          <Form.Item
-            required
-            label="Timings"
-            name="timings"
-            rules={[{ required: true }]}
-          >
-            <TimePicker.RangePicker format="HH:mm" />
+            <Input placeholder="Testimonial?" />
           </Form.Item>
         </Col>
       </Row>
+
+
+        
 
       <div className="d-flex justify-content-end">
         <Button className="primary-button" htmlType="submit">

@@ -1,4 +1,4 @@
-import { Button, Col, DatePicker, Form, Input, Row, TimePicker } from "antd";
+import { Button, Col, DatePicker, Form, Input, Select, Row, Anchor } from "antd";
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import { useDispatch, useSelector } from "react-redux";
@@ -45,27 +45,27 @@ function BookAppointment() {
   };
   const checkAvailability = async () => {
     try {
-      dispatch(showLoading());
-      const response = await axios.post(
-        "/api/user/check-booking-avilability",
-        {
-          psychiatristId: params.psychiatristId,
-          date: date,
-          time: time,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+        dispatch(showLoading());
+        const response = await axios.post(
+          "/api/user/check-booking-avilability",
+          {
+            psychiatristId: params.psychiatristId,
+            date: date,
+            time: time,
           },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        dispatch(hideLoading());
+        if (response.data.success) {
+          toast.success(response.data.message);
+          setIsAvailable(true);
+        } else {
+          toast.error(response.data.message);
         }
-      );
-      dispatch(hideLoading());
-      if (response.data.success) {
-        toast.success(response.data.message);
-        setIsAvailable(true);
-      } else {
-        toast.error(response.data.message);
-      }
     } catch (error) {
       toast.error("Error booking appointment");
       dispatch(hideLoading());
@@ -110,6 +110,13 @@ function BookAppointment() {
     }
   };
 
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+  
+  const { TextArea } = Input;
+  const { Link } = Anchor;
+  
   useEffect(() => {
     getPsychiatristData();
   }, []);
@@ -118,14 +125,14 @@ function BookAppointment() {
       {psychiatrist && (
         <div>
           <h1 className="page-title">
-            {psychiatrist.firstName} {psychiatrist.lastName}
+            Dr. {psychiatrist.firstName} {psychiatrist.lastName}
           </h1>
           <hr />
           <Row gutter={20} className="mt-5" align="middle">
 
             <Col span={8} sm={24} xs={24} lg={8}>
               <img
-                src="https://thumbs.dreamstime.com/b/finger-press-book-now-button-booking-reservation-icon-online-149789867.jpg"
+                src="https://sophrmakeup.co.uk/wp-content/uploads/2020/01/Book-Now-1.png"
                 alt=""
                 width="100%"
                 height='400'
@@ -133,7 +140,7 @@ function BookAppointment() {
             </Col>
             <Col span={8} sm={24} xs={24} lg={8}>
               <h1 className="normal-text">
-                <b>Timings :</b> {psychiatrist.timings[0]} - {psychiatrist.timings[1]}
+                <b>Working Hours :</b> 8am to 5pm
               </h1>
               <p>
                 <b>Phone Number : </b>
@@ -144,12 +151,12 @@ function BookAppointment() {
                 {psychiatrist.address}
               </p>
               <p>
-                <b>Fee per Visit : </b>
+                <b>Fee Per 2hrs : </b>
                 {psychiatrist.feePerCunsultation}
               </p>
               <p>
-                <b>Website : </b>
-                {psychiatrist.website}
+                <b>Field Of Operation : </b>
+                {psychiatrist.specialization}
               </p>
               <div className="d-flex flex-column pt-2 mt-2">
                 <DatePicker
@@ -159,14 +166,59 @@ function BookAppointment() {
                     setIsAvailable(false);
                   }}
                 />
-                <TimePicker
-                  format="HH:mm"
-                  className="mt-3"
-                  onChange={(value) => {
-                    setIsAvailable(false);
-                    setTime(moment(value).format("HH:mm"));
-                  }}
-                />
+                <br/>
+                <Form.Item>
+                  <TextArea rows={4} placeholder="Describe your condition"/>
+                </Form.Item>
+                <br/>
+                <Select
+                    placeholder="Book a slot"
+                    style={{
+                      width: 340,
+                    }}
+                    onChange={handleChange}
+                    options={[
+                      {
+                        value: 1,
+                        label: '8am - 10am',
+                      },
+                      {
+                        value: 2,
+                        label: '10am - 12pm',
+                      },
+                      {
+                        value: 1,
+                        label: '2pm - 4pm',
+                      },
+                      {
+                        value: 1,
+                        label: '4am - 6pm',
+                      },
+                      {
+                        value: 'disabled',
+                        disabled: true,
+                        label: 'No Slots after 6pm',
+                      },
+                    ]}
+                  />
+                  <br/>
+                <Select
+                    placeholder="Preference of Meet"
+                    style={{
+                      width: 340,
+                    }}
+                    onChange={handleChange}
+                    options={[
+                      {
+                        value: 1,
+                        label: 'Physical',
+                      },
+                      {
+                        value: 2,
+                        label: 'Online',
+                      },
+                    ]}
+                  />
               {!isAvailable &&   <Button
                   className="primary-button mt-3 full-width-button"
                   onClick={checkAvailability}
@@ -182,6 +234,10 @@ function BookAppointment() {
                     Book Now
                   </Button>
                 )}
+              </div>
+              <br/>
+              <div>
+                You can also register as a psychiatrist <a style={{color: "#005555", fontSize: 16 }} href="http://localhost:3000/apply-psychiatrist">here</a>
               </div>
             </Col>
            
