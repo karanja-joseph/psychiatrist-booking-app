@@ -186,7 +186,9 @@ router.post("/apply-psychiatrist-account", auth, async (req, res) => {
     try {
       req.body.status = "pending";
       req.body.date = moment(req.body.date, "DD-MM-YYYY").toISOString();
-      req.body.time = moment(req.body.time, "HH:mm").toISOString();
+      req.body.desc = req.body.desc;
+      req.body.slots = req.body.slots;
+      req.body.meetup = req.body.meetup;
       const newAppointment = new Appointment(req.body);
       await newAppointment.save();
       //pushing notification to psychiatrist based on his userid
