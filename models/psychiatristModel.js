@@ -17,28 +17,16 @@ const psychiatristsSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    website: {
-      type: String,
-      required: true,
-    },
     address: {
       type: String,
       required: true,
     },
     specialization: {
-      type: String,
-      required: true,
-    },
-    experience: {
-      type: String,
-      required: true,
-    },
-    feePerCunsultation: {
-      type: Number,
-      required: true,
-    },
-    timings: {
       type: Array,
+      required: true,
+    },
+    description: {
+      type: String,
       required: true,
     },
     status: {

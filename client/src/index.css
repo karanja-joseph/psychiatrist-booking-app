@@ -28,6 +28,7 @@ label {
   font-size: 16px !important;
   color: rgb(255, 255, 255) !important;
 }
+
 .ant-form-item {
   margin: 10px 0 !important;
 }
@@ -35,7 +36,7 @@ label {
   border: none !important;
 }
 .ant-input {
-  background-color: rgb(243, 234, 234);
+  background-color: rgba(255, 255, 255, 0.963);;
 }
 .ant-picker {
   border-radius: 2px !important;
@@ -89,8 +90,8 @@ label {
   background-color: #3a393915;
 }
 .primary-button {
-  background-color: #005555 !important;
-  border-color: #005555 !important;
+  background-color: #696969 !important;
+  border-color: #696969 !important;
   height: 40px !important;
   width: 100% !important;
   color: white !important;

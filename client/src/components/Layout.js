@@ -14,35 +14,25 @@ function Layout({ children }) {
         {
             name: "Home",
             path: "/",
-            icon: "ri-home-line",
         },
         {
             name: "Appointments",
             path: "/appointments",
-            icon: "ri-file-list-line",
         },
-        {
-            name: "Apply Psychiatrist",
-            path: "/apply-psychiatrist",
-            icon: "ri-hospital-line",
-        }
     ];
 
     const psychiatristMenu = [
         {
             name: "Home",
             path: "/",
-            icon: "ri-home-line",
         },
         {
             name: "Appointments",
             path: "/psychiatrist/appointments",
-            icon: "ri-file-list-line",
         },
         {
             name: "Profile",
             path: `/psychiatrist/profile/${user?._id}`,
-            icon: "ri-user-line",
         },
     ];
 
@@ -50,17 +40,15 @@ function Layout({ children }) {
         {
             name: "Overview",
             path: "/admin/overview",
-            icon: "ri-home-line",
         },
         {
             name: "Patients",
             path: "/admin/userslist",
-            icon: "ri-user-line",
+
         },
         {
             name: "Psychiatrist",
             path: "/admin/psychiatristslist",
-            icon: "ri-user-star-line",
         }
     ];
 
@@ -83,7 +71,7 @@ function Layout({ children }) {
                                     className={`d-flex menu-item ${isActive && "active-menu-item"
                                         }`}
                                 >
-                                    <i className={menu.icon}></i>
+                                
                                     {!collapsed && <Link to={menu.path}>{menu.name}</Link>}
                                 </div>
                             );
@@ -96,7 +84,7 @@ function Layout({ children }) {
                                 navigate("/login");
                             }}
                         >
-                            <i className="ri-logout-circle-line"></i>
+                        
                             {!collapsed && <Link to="/login">Logout</Link>}
                         </div>
                     </div>

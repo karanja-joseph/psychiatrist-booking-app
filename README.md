@@ -44,7 +44,7 @@ The app/system is should allow patients to make bookings from their emails, chos
 
 #### D. Deliverables
 
-The final customers (psychiatrist and the patients) will get a web app with a nice intuitive design, good user experience with guides. Easy navigation and some prototypes for demonstration. Additional user requirements and functionalities will be accepted and integrated if required.
+The final customers (psychiatrist and the patients) will get a web app with a nice intuitive design, good user experience with guides. Easy navigation and some [prototypes](https://www.figma.com/file/xxazT6KcE10jjuhl3Owvbb/Psych-App?node-id=1%3A20&t=f6LkVy5gazeiDYUx-1) for demonstration. Additional user requirements and functionalities will be accepted and integrated if required.
 
 #### E. Affected Parties
 

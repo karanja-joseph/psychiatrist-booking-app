@@ -21,9 +21,14 @@ const appointmentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    time: {
+    desc: {
       type: String,
-      required: true,
+    },
+    slots: {
+      type: String,
+    },
+    meetup: {
+      type: String,
     },
     status: {
       type: String,

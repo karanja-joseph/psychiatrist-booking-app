@@ -76,7 +76,7 @@ function Profile() {
   }, []);
   return (
     <Layout>
-      <h1 className="page-title">Psychiatrist Profile</h1>
+      <h3 className="page-title">Update profile..</h3>
       <hr />
       {psychiatrist && <PsychiatristDetailsForm onFinish={onFinish} initialValues={psychiatrist} />}
     </Layout>
