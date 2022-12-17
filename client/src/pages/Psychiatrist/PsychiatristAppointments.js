@@ -35,7 +35,7 @@ function PsychiatristAppointments() {
       dispatch(showLoading());
       const resposne = await axios.post(
         "/api/psychiatrist/change-appointment-status",
-        { appointmentId : record._id, status: status },
+        { appointmentId: record._id, status: status },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -54,27 +54,30 @@ function PsychiatristAppointments() {
   };
   const columns = [
     {
-      title: "Id",
-      dataIndex: "_id",
-    },
-    {
       title: "Patient",
       dataIndex: "name",
       render: (text, record) => <span>{record.userInfo.name}</span>,
     },
     {
-      title: "Phone",
-      dataIndex: "phoneNumber",
-      render: (text, record) => <span>{record.psychiatristInfo.phoneNumber}</span>,
+      title: "Reason",
+      dataIndex: "desc",
+      render: (text, record) => <span>{record.desc}</span>,
     },
     {
-      title: "Date & Time",
+      title: "Time",
+      dataIndex: "slots",
+      render: (text, record) => <span>{record.slots}</span>,
+    },
+    {
+      title: "Type",
+      dataIndex: "meetup",
+      render: (text, record) => <span>{record.meetup}</span>,
+    },
+    {
+      title: "Date Booked",
       dataIndex: "createdAt",
       render: (text, record) => (
-        <span>
-          {moment(record.date).format("DD-MM-YYYY")}{" "}
-          {moment(record.time).format("HH:mm")}
-        </span>
+        <span>{moment(record.date).format("DD-MM-YYYY")} </span>
       ),
     },
     {
@@ -92,13 +95,13 @@ function PsychiatristAppointments() {
                 className="anchor px-2"
                 onClick={() => changeAppointmentStatus(record, "approved")}
               >
-                Approve
+                Accept
               </h1>
               <h1
                 className="anchor"
                 onClick={() => changeAppointmentStatus(record, "rejected")}
               >
-                Reject
+                Rest-this
               </h1>
             </div>
           )}
