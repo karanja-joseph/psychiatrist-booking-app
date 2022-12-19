@@ -20,4 +20,4 @@ module.exports = async (req, res, next) => {
       success: false,
     });
   }
-}
+};

@@ -11,6 +11,7 @@
 _17th September 2022_
 
 #### Tools used
+
 - Github Version Control - CLI and actions
 - Javascript es6 Syntax
 - React
@@ -18,8 +19,12 @@ _17th September 2022_
 - NodeJS
 - npm packages
 - Jest
+- AndD React Tool
+- Redux
+- [Figma Design](https://www.figma.com/file/xxazT6KcE10jjuhl3Owvbb/Psych-App?node-id=1%3A20&t=f6LkVy5gazeiDYUx-1)
 
 #### Enviropnment
+
 - Windows 10 Pro
 
 #### A. Project Background and Description

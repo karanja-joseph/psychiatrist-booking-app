@@ -26,7 +26,7 @@ input:focus,
 }
 label {
   font-size: 16px !important;
-  color: rgb(255, 255, 255) !important;
+  color: rgb(29, 28, 28) !important;
 }
 
 .ant-form-item {
@@ -108,7 +108,7 @@ p {
 }
 
 .anchor {
-  color: #696969 !important;
+  color: #1d1d1d !important;
   cursor: pointer;
   font-size: 16px !important;
   font-weight: 500;
@@ -120,7 +120,7 @@ p {
   font-weight: 500;
 }
 .anchor:hover {
-  color: black !important;
+  color: #696969 !important;
 }
 
 .cursor-pointer {
@@ -150,6 +150,5 @@ p {
   padding: 7px 15px;
   margin-left: -40px;
   margin-right: 30px;
-  border-bottom-left-radius: 10px;
 }
 /* for card color: #FAEDE6, inside input: #D9D9D9 */

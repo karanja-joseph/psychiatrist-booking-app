@@ -1,18 +1,11 @@
-import { Button, Col, Form, Input, Row, Select } from "antd";
+import { Button, Col, Form, Input, Row, Typography } from "antd";
 import React from "react";
 
-
-
+const { Paragraph, Title } = Typography;
 
 function PsychiatristDetailsForm({ onFinish }) {
-
-
   return (
-    <Form
-      layout="vertical"
-      onFinish={onFinish}
-      
-    >
+    <Form layout="vertical" onFinish={onFinish}>
       <h1 className="card-title mt-3">All fields are required!</h1>
       <Row gutter={20}>
         <Col span={8} xs={24} sm={24} lg={8}>
@@ -77,9 +70,25 @@ function PsychiatristDetailsForm({ onFinish }) {
           </Form.Item>
         </Col>
       </Row>
-
-
-        
+      <Title level={5}>Specialization Of Psychiatrists</Title>
+      <Row gutter={20}>
+        <Col span={8} xs={24} sm={24} lg={8}>
+          <Form.Item>
+            <Paragraph copyable>Child and adolescent psychiatrists</Paragraph>
+            <Paragraph copyable>Geriatric psychiatrists</Paragraph>
+            <Paragraph copyable>Addiction psychiatrists</Paragraph>
+            <Paragraph copyable>Nurse practitioners</Paragraph>
+          </Form.Item>
+        </Col>
+        <Col span={8} xs={24} sm={24} lg={8}>
+          <Form.Item>
+            <Paragraph copyable>Forensic psychiatrists</Paragraph>
+            <Paragraph copyable>Organizational psychiatrist</Paragraph>
+            <Paragraph copyable>Muli-specialty psychiatrists</Paragraph>
+            <Paragraph copyable>Neuropsychiatrists</Paragraph>
+          </Form.Item>
+        </Col>
+      </Row>
 
       <div className="d-flex justify-content-end">
         <Button className="primary-button" htmlType="submit">

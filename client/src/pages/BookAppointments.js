@@ -162,8 +162,8 @@ function BookAppointment() {
                 {psychiatrist.address}
               </p>
               <p>
-                <b>Fee Per 2hrs : </b>
-                {psychiatrist.feePerCunsultation}
+                <b>Standard fee rate(per hr)): </b>
+                Ksh. 1000
               </p>
               <p>
                 <b>Field Of Operation : </b>
@@ -174,6 +174,7 @@ function BookAppointment() {
                   <Form.Item name="date">
                     <DatePicker
                       format="DD-MM-YYYY"
+                      style={{ width: 340 }}
                       onChange={(value) => {
                         setDate(moment(value).format("DD-MM-YYYY"));
                       }}
@@ -183,8 +184,9 @@ function BookAppointment() {
                   <br />
                   <Form.Item name="desc">
                     <Input.TextArea
-                      rows={4}
+                      rows={3}
                       placeholder="Describe your condition"
+                      style={{ width: 340 }}
                       onChange={(event) => setDesc(event.target.value)}
                     />
                   </Form.Item>
@@ -245,7 +247,8 @@ function BookAppointment() {
                     )} */}
                   <Form.Item>
                     <Button
-                      className="primary-button mt-3 full-width-button"
+                      className="primary-button mt-3"
+                      style={{ width: 340 }}
                       htmlType="submit"
                     >
                       Book Now
