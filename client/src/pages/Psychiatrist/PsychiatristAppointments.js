@@ -87,7 +87,7 @@ function PsychiatristAppointments() {
       render: (text, record) => <span>{record.userInfo.name}</span>,
     },
     {
-      title: "Reason",
+      title: "Condition",
       dataIndex: "desc",
       render: (text, record) => <span>{record.desc}</span>,
     },
