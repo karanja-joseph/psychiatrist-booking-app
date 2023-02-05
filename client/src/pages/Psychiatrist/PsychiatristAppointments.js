@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
+// var nodemailer = require("nodemailer");
 
 function PsychiatristAppointments() {
   const [appointments, setAppointments] = useState([]);
@@ -52,6 +53,33 @@ function PsychiatristAppointments() {
       dispatch(hideLoading());
     }
   };
+
+  // const emailThis = async (record) => {
+  //   var emailMessage = `Hi ${record.userinfo.name},\n\nThank you for booking with us.\n\nYour time: ${record.slots} has been accepted!.`;
+  //   var transporter = nodemailer.createTransport({
+  //     service: "gmail",
+  //     auth: {
+  //       user: "josephkaranja033@gmail.com",
+  //       pass: "kasukuyao",
+  //     },
+  //   });
+
+  //   var mailOptions = {
+  //     from: "josephkaranja033@gmail.com",
+  //     to: record.userInfo.email,
+  //     subject: "Appointment Booking",
+  //     text: emailMessage,
+  //   };
+
+  //   transporter.sendMail(mailOptions, function (error, info) {
+  //     if (error) {
+  //       console.log(error);
+  //     } else {
+  //       console.log("Email sent: " + info.response);
+  //     }
+  //   });
+  // };
+
   const columns = [
     {
       title: "Patient",
@@ -59,7 +87,7 @@ function PsychiatristAppointments() {
       render: (text, record) => <span>{record.userInfo.name}</span>,
     },
     {
-      title: "Reason",
+      title: "Condition",
       dataIndex: "desc",
       render: (text, record) => <span>{record.desc}</span>,
     },
@@ -101,7 +129,7 @@ function PsychiatristAppointments() {
                 className="anchor"
                 onClick={() => changeAppointmentStatus(record, "rejected")}
               >
-                Rest-this
+                Not Available
               </h1>
             </div>
           )}
